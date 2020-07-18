@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="ChakraControlLibrary.NorthIndianKundaliChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChakraControlLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <SolidColorBrush Color="#f2feff" x:Key="fillBackground"/>
+        <SolidColorBrush Color="#e4eaf5" x:Key="mouseOverBrush"/>
+        <SolidColorBrush Color="#ffbfbf" x:Key="checkedBrush"/>
+    </UserControl.Resources>
+    <Grid>
+        <local:HouseBlockSkin  FillBrush="{StaticResource fillBackground}" MouseOverBackground="{StaticResource mouseOverBrush}" ButtonCheckedBrush="{StaticResource checkedBrush}"/>
+        <local:TextKundaliControl StartRashiNumber="5" />
+    </Grid>
+</UserControl>

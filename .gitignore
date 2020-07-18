@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+*.dll
+*.pdb
+*.exe
+/ChakraControlLibrary/TestBench/obj
+/ChakraControlLibrary/TestBench/bin/Debug/netcoreapp3.1
+/ChakraControlLibrary/ChakraControlLibrary/obj
+/ChakraControlLibrary/ChakraControlLibrary/bin/Debug/netcoreapp3.1
+*.v2

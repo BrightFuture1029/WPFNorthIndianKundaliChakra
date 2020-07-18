@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChakraControlLibrary", "ChakraControlLibrary\ChakraControlLibrary.csproj", "{B38F3B6D-A7ED-4298-BA64-785DAAC6837C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBench", "TestBench\TestBench.csproj", "{4EBD37B4-B503-4D91-B5CA-FEA73BD9067F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B38F3B6D-A7ED-4298-BA64-785DAAC6837C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B38F3B6D-A7ED-4298-BA64-785DAAC6837C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B38F3B6D-A7ED-4298-BA64-785DAAC6837C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B38F3B6D-A7ED-4298-BA64-785DAAC6837C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EBD37B4-B503-4D91-B5CA-FEA73BD9067F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EBD37B4-B503-4D91-B5CA-FEA73BD9067F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EBD37B4-B503-4D91-B5CA-FEA73BD9067F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EBD37B4-B503-4D91-B5CA-FEA73BD9067F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52D598C0-C770-403C-833A-BEB96CC86421}
+	EndGlobalSection
+EndGlobal
