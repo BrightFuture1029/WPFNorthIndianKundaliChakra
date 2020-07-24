@@ -5,293 +5,99 @@
              xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChakraControlLibrary"  
-             x:Name="parent" 
+             x:Name="houseParent" 
              mc:Ignorable="d"
              d:DesignHeight="80" d:DesignWidth="80">
+
     <UserControl.Resources>
-        <SolidColorBrush Color="#f2feff" x:Key="fillBackground"/>
-        <SolidColorBrush Color="#e4eaf5" x:Key="mouseOverBrush"/>
-        <SolidColorBrush Color="#ffbfbf" x:Key="checkedBrush"/>
-        
-        <local:ScaleConverter x:Key="scaleConverter"/>
-        <Style TargetType="Path" x:Key="pathStyle">
-            <Setter Property="Fill" Value="{Binding ElementName=parent,Path=FillBrush,FallbackValue={StaticResource fillBackground}}"/>
-        </Style>
-        <Style TargetType="local:HouseToggleButton">
-            <Setter Property="Command" Value="{Binding ElementName=parent,Path=HouseCheckCmd}"/>
-            <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=HouseNumber}"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CentralResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
+    
     <Grid Height="20" Width="20">
+        
         <Grid.LayoutTransform>
-            <ScaleTransform ScaleX="{Binding ElementName=parent, Path=ActualWidth, Converter={StaticResource scaleConverter}}" 
-                            ScaleY="{Binding ElementName=parent, Path=ActualHeight, Converter={StaticResource scaleConverter}}" />
+            <ScaleTransform ScaleX="{Binding ElementName=houseParent, Path=ActualWidth, Converter={StaticResource scaleConverter}}" 
+                            ScaleY="{Binding ElementName=houseParent, Path=ActualHeight, Converter={StaticResource scaleConverter}}" />
         </Grid.LayoutTransform>
+        
         <Canvas Width="20" Height="20" x:Name="cc">
+            <local:HouseToggleButton x:Name="Hno1" 
+                                     Canvas.Left="5" 
+                                     HouseNumber="1"
+                                     GeometryPath="M 5 0 L 5 0 10 5 5 10 0 5 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno1" Canvas.Left="5" HouseNumber="1" IsChecked="{Binding ElementName=parent,Path=HouseStatusList[0]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 5 0 L 5 0 10 5 5 10 0 5 z" 
-                              Style="{StaticResource pathStyle}"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path">
-                        </Path>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno2" 
+                                     HouseNumber="2" 
+                                     GeometryPath="M 0 0 L 10 0 5 5 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno2" HouseNumber="2" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[1]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 0 L 10 0 5 5 z"
-                              Style="{StaticResource pathStyle}"
-                              x:Name="path"
-                              PresentationOptions:Freeze="True"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno3" 
+                                     HouseNumber="3" 
+                                     GeometryPath="M 0 0 L 5 5 0 10 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno3" HouseNumber="3" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[2]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 0 L 5 5 0 10 z" 
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno4" 
+                                     Canvas.Top="5" 
+                                     HouseNumber="4" 
+                                     GeometryPath="M 5 0 L 5 0 10 5 5 10 0 5 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno4" Canvas.Top="5" HouseNumber="4" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[3]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 5 0 L 5 0 10 5 5 10 0 5 z"
-                              x:Name="path"
-                              PresentationOptions:Freeze="True"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno5" 
+                                     Canvas.Top="10" 
+                                     HouseNumber="5" 
+                                     GeometryPath="M 0 0 L 5 5 0 10 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno5" Canvas.Top="10" HouseNumber="5" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[4]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 0 L 5 5 0 10 z"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno6" 
+                                     Canvas.Top="10" 
+                                     HouseNumber="6" 
+                                     GeometryPath="M 0 10 L 5 5 10 10 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno6" Canvas.Top="10" HouseNumber="6" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[5]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 10 L 5 5 10 10 z"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno7" 
+                                     Canvas.Top="10" 
+                                     Canvas.Left="5" 
+                                     HouseNumber="7" 
+                                     GeometryPath="M 5 0 L 5 0 10 5 5 10 0 5 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno7" Canvas.Top="10" Canvas.Left="5" HouseNumber="7" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[6]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 5 0 L 5 0 10 5 5 10 0 5 z"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno8" 
+                                     Canvas.Top="10" 
+                                     Canvas.Left="10" 
+                                     HouseNumber="8" 
+                                     GeometryPath="M 10 0 L 5 5 10 10 "
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno8" Canvas.Top="10" Canvas.Left="10" HouseNumber="8" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[7]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 10 0 L 5 5 10 10 "
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno9" 
+                                     Canvas.Top="10" 
+                                     Canvas.Left="10" 
+                                     HouseNumber="9" 
+                                     GeometryPath="M 0 10 L 5 5 10 10 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno9" Canvas.Top="10" Canvas.Left="10" HouseNumber="9" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[8]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 10 L 5 5 10 10 z"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno10" 
+                                     Canvas.Left="10" 
+                                     Canvas.Top="5" 
+                                     HouseNumber="10" 
+                                     GeometryPath="M 5 0 L 5 0 10 5 5 10 0 5 z"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno10" Canvas.Left="10" Canvas.Top="5" HouseNumber="10" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[9]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 5 0 L 5 0 10 5 5 10 0 5 z"
-                              PresentationOptions:Freeze="True"
-                              x:Name="path"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno11" 
+                                     Canvas.Left="10" 
+                                     HouseNumber="11" 
+                                     GeometryPath="M 10 0 L 5 5 10 10"
+                                     />
 
-            <local:HouseToggleButton x:Name="Hno11" Canvas.Left="10" HouseNumber="11" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[10]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 10 0 L 5 5 10 10"
-                              x:Name="path"
-                              PresentationOptions:Freeze="True"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
-
-            <local:HouseToggleButton x:Name="Hno12" Canvas.Left="10" HouseNumber="12" 
-                                     IsChecked="{Binding ElementName=parent,Path=HouseStatusList[11]}">
-                <local:HouseToggleButton.Template>
-                    <ControlTemplate>
-                        <Path Data="M 0 0 L 10 0 5 5 z" 
-                              x:Name="path"
-                              PresentationOptions:Freeze="True"
-                              Style="{StaticResource pathStyle}"/>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=MouseOverBackground,FallbackValue={StaticResource mouseOverBrush}}"/>
-                            </Trigger>
-                            <Trigger Property="local:HouseToggleButton.IsChecked" Value="True">
-                                <Setter Property="Fill" TargetName="path" 
-                                        Value="{Binding ElementName=parent, Path=ButtonCheckedBrush,FallbackValue={StaticResource checkedBrush}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </local:HouseToggleButton.Template>
-            </local:HouseToggleButton>
+            <local:HouseToggleButton x:Name="Hno12" 
+                                     Canvas.Left="10" 
+                                     HouseNumber="12" 
+                                     GeometryPath="M 0 0 L 10 0 5 5 z" 
+                                     />
         </Canvas>
     </Grid>
 </UserControl>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,19 +15,26 @@ using System.Windows.Shapes;
 namespace ChakraControlLibrary
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for tt.xaml
     /// </summary>
-    public partial class NorthIndianKundaliChart : UserControl,INotifyPropertyChanged
+    public partial class HouseToggleButton : ToggleButton
     {
-        public NorthIndianKundaliChart()
+        public HouseToggleButton()
         {
-            Initialize_HouseBlockSkin();
-            Initialize_TextKundaliControl();
-            FillRashiNumberes(1);
             InitializeComponent();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SquarePointCollection)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CrossPointCollection)));
         }
+
+        public Geometry GeometryPath { get; set; }
+
+        public int HouseNumber
+        {
+            get { return (int)GetValue(HouseNumberProperty); }
+            set { SetValue(HouseNumberProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HouseNumber.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HouseNumberProperty =
+            DependencyProperty.Register("HouseNumber", typeof(int), typeof(HouseToggleButton), new PropertyMetadata(0));
 
         public Brush DefaultFillBrush
         {
@@ -38,7 +45,7 @@ namespace ChakraControlLibrary
         // Using a DependencyProperty as the backing store for DefaultFillBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DefaultFillBrushProperty =
             DependencyProperty.Register("DefaultFillBrush", typeof(Brush),
-                typeof(NorthIndianKundaliChart), new PropertyMetadata(null));
+                typeof(HouseToggleButton), new PropertyMetadata(null));
 
         public Brush MouseOverFillBrush
         {
@@ -49,7 +56,7 @@ namespace ChakraControlLibrary
         // Using a DependencyProperty as the backing store for MouseOverFillBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MouseOverFillBrushProperty =
             DependencyProperty.Register("MouseOverFillBrush", typeof(Brush),
-                typeof(NorthIndianKundaliChart), new PropertyMetadata(null));
+                typeof(HouseToggleButton), new PropertyMetadata(null));
 
         public Brush CheckedFillBrush
         {
@@ -60,23 +67,6 @@ namespace ChakraControlLibrary
         // Using a DependencyProperty as the backing store for CheckedFillBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CheckedFillBrushProperty =
             DependencyProperty.Register("CheckedFillBrush", typeof(Brush),
-                typeof(NorthIndianKundaliChart), new PropertyMetadata(null));
-    }
-
-    public class HouseBlockConfiguration : DependencyObject
-    {
-
-
-        public int MyProperty
-        {
-            get { return (int)GetValue(MyPropertyProperty); }
-            set { SetValue(MyPropertyProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MyPropertyProperty =
-            DependencyProperty.Register("MyProperty", typeof(int), typeof(HouseBlockConfiguration), new PropertyMetadata(0));
-
-
+                typeof(HouseToggleButton), new PropertyMetadata(null));
     }
 }

@@ -1,17 +1,19 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ChakraControlLibrary
 {
-    public class HouseState
+    public class HouseElement : ObservableObject
     {
-        public HouseEnum House { get; set; }
-        public bool IsChecked { get; set; }
+        public string DisplayName { get; set; }
     }
 
-    public class PlanetDetail
+    public class HouseElements : ObservableObject
     {
+        public ObservableCollection<HouseElement> HouseElementCollection { get; set; }
         public string Name { get; set; }
     }
 

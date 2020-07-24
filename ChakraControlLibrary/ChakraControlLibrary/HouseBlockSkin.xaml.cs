@@ -1,6 +1,8 @@
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +21,25 @@ namespace ChakraControlLibrary
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class HouseBlockSkin : UserControl
+    public partial class HouseBlockSkin : UserControl,INotifyPropertyChanged
     {
         public HouseBlockSkin()
         {
             HouseStatusList = new List<bool>();
-            for (int i = 0; i < 12; i++)
-                HouseStatusList.Add(false);
+            var collection = new ObservableCollection<HouseBlockDetail>();
 
+            for (int i = 0; i < 12; i++)
+            {
+                HouseStatusList.Add(false);
+                collection.Add(new HouseBlockDetail());
+            }
+            
             InitializeComponent();
+            HouseBlockDetailCollection = collection;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HouseBlockDetailCollection)));
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand HouseCheckCmd { get { return new RelayCommand<int>(HouseButtonClicked);  } }
 
@@ -38,41 +49,9 @@ namespace ChakraControlLibrary
         {
             if (obj == 0 || obj > 11 || HouseCommand == null || 
                 DependencyProperty.UnsetValue == HouseCommand) return;
-            HouseCommand.Execute(new HouseState() { House = (HouseEnum)obj, IsChecked = HouseStatusList[obj - 1] });
+
+            HouseCommand.Execute(new HouseBlockDetail() { House = (HouseEnum)obj, IsChecked = HouseStatusList[obj - 1] });
         }
-
-        public Brush FillBrush
-        {
-            get { return (Brush)GetValue(FillBrushProperty); }
-            set { SetValue(FillBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for FillBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FillBrushProperty =
-            DependencyProperty.Register("FillBrush", typeof(Brush), typeof(HouseBlockSkin),
-                new PropertyMetadata(null));
-
-        public Brush ButtonCheckedBrush
-        {
-            get { return (Brush)GetValue(ButtonCheckedBrushProperty); }
-            set { SetValue(ButtonCheckedBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ButtonCheckedBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ButtonCheckedBrushProperty =
-            DependencyProperty.Register("ButtonCheckedBrush", typeof(Brush), typeof(HouseBlockSkin),
-                new PropertyMetadata(null));
-
-        public Brush MouseOverBackground
-        {
-            get { return (Brush)GetValue(MouseOverBackgroundProperty); }
-            set { SetValue(MouseOverBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MouseOverBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MouseOverBackgroundProperty =
-            DependencyProperty.Register("MouseOverBackground", typeof(Brush), typeof(HouseBlockSkin),
-                new PropertyMetadata(null));
 
         public ICommand HouseCommand
         {
@@ -82,6 +61,16 @@ namespace ChakraControlLibrary
 
         // Using a DependencyProperty as the backing store for HouseCommand.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HouseCommandProperty =
-            DependencyProperty.Register("HouseCommand", typeof(ICommand), typeof(HouseBlockSkin), new PropertyMetadata(null));       
+            DependencyProperty.Register("HouseCommand", typeof(ICommand), typeof(HouseBlockSkin), new PropertyMetadata(null));
+
+        public ObservableCollection<HouseBlockDetail> HouseBlockDetailCollection
+        {
+            get { return (ObservableCollection<HouseBlockDetail>)GetValue(HouseBlockDetailCollectionProperty); }
+            set { SetValue(HouseBlockDetailCollectionProperty, value); }
+        }
+        
+        // Using a DependencyProperty as the backing store for HouseBlockDetailCollection.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HouseBlockDetailCollectionProperty =
+            DependencyProperty.Register("HouseBlockDetailCollection", typeof(ObservableCollection<HouseBlockDetail>), typeof(HouseBlockSkin), new PropertyMetadata(null));       
     }
 }

@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestBench" xmlns:chakracontrollibrary="clr-namespace:ChakraControlLibrary;assembly=ChakraControlLibrary"
-        mc:Ignorable="d" x:Name="parent" DataContext="{DynamicResource vm1}"
+        mc:Ignorable="d" x:Name="parent" 
         Title="Test Bench" d:DesignHeight="300" d:DesignWidth="300">
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -14,6 +17,6 @@
         <StackPanel>
             <Button Content="Calculate" Command="{Binding CalculateCmd}"/>
         </StackPanel>
-        <chakracontrollibrary:NorthIndianKundaliChart Grid.Row="1" />
+        <chakracontrollibrary:NorthIndianKundaliChart Grid.Row="1" MouseOverBackground="Red"/>
     </Grid>
 </Window>
