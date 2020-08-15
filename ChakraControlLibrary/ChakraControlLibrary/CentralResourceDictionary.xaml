@@ -21,4 +21,16 @@
     
     <local:ScaleConverter x:Key="scaleConverter"/>
     <local:ChildBasedOnTagConverter x:Key="ChildBasedOnTagConverter"/>
+
+    <Style TargetType="other:HouseElementItemsControl" x:Key="houseElementsStyle">
+        <Setter Property="ItemTemplate" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}, Path=HouseElementTemplate}"/>
+        <Setter Property="ItemsSource">
+            <Setter.Value>
+                    <MultiBinding Converter="{StaticResource HouseNumberToIndexMultiBindConverter}">
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType=UserControl}" Path="HouseDetailItemSource" />
+                        <Binding RelativeSource="{RelativeSource Mode=Self}" Path="HouseNumber"/>
+                    </MultiBinding>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

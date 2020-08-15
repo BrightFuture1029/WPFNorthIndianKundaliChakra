@@ -12,7 +12,7 @@
         <ControlTemplate x:Key="HouseElementToggleBtnTemplate" TargetType="ToggleButton">
             <Grid>
                 <Border CornerRadius="5" x:Name="border" Background="#FDAD5C"/>
-                <TextBlock Text="{Binding DisplayName}"/>
+                <TextBlock Text="{Binding Path=DisplayName}"/>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -23,33 +23,41 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
-        <Style TargetType="other:HouseElementItemsControl">
-            <Setter Property="ItemsSource" Value="{Binding HouseDetailCollection[0].HouseElementCollection}"/>
-            <Setter Property="ItemTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <ToggleButton Template="{StaticResource HouseElementToggleBtnTemplate}" 
-                                  Margin="2"
-                                  VerticalContentAlignment="Center"
-                                  Height="20"/>
-                        <!--<TextBlock Text="{Binding DisplayName}" Margin="2"/>-->
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </Window.Resources>
     <Window.DataContext>
         <local:MainWindowVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel>
-            <Button Content="Calculate" Command="{Binding CalculateCmd}"/>
-        </StackPanel>
-        <chakracontrollibrary:NorthIndianKundaliChart Grid.Row="1" MouseOverBackground="Red"/>
+        <Expander Grid.Row="0" IsExpanded="True">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox ItemsSource="{Binding KundaliTemplateList}" 
+                      SelectedItem="{Binding SelectedKundaliTemplate}"
+                          Width="200"
+                          Height="25"
+                          Margin="5"/>
+                <Button Content="Load" 
+                        Command="{Binding Load}"
+                        Width="60"
+                        Margin="5"/>
+            </StackPanel>
+        </Expander>
+        <chakracontrollibrary:NorthIndianKundaliChart Grid.Row="1" 
+                                                      MouseOverBackground="Red"
+                                                      StartRashiNumber="{Binding StartRashiNumber}"
+                                                      HouseDetailItemSource="{Binding HouseDetailCollection}">
+            <chakracontrollibrary:NorthIndianKundaliChart.HouseElementTemplate>
+                <DataTemplate>
+                    <ToggleButton Template="{StaticResource HouseElementToggleBtnTemplate}" 
+                                  Margin="2"
+                                  VerticalContentAlignment="Center"
+                                  Height="20"/>
+                    <!--<TextBlock Text="{Binding DisplayName}" Margin="2"/>-->
+                </DataTemplate>
+            </chakracontrollibrary:NorthIndianKundaliChart.HouseElementTemplate>
+        </chakracontrollibrary:NorthIndianKundaliChart>
     </Grid>
 </Window>

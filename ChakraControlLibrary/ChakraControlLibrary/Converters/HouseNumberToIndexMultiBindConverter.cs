@@ -26,11 +26,14 @@ namespace ChakraControlLibrary.Converters
         {
             if (values.Length != 2 || values.Any(x=> x==null || DependencyProperty.UnsetValue.Equals(x))) return null;
 
-            var list = values[0] as System.Collections.IList;
+            var list = values[0] as IEnumerable<HouseElements>;
+
+            if (list == null || list.Count() == 0) return null;
+
             var number = (int)values[1];
             number--;
 
-            return list?[number];
+            return list?.ElementAtOrDefault(number).HouseElementCollection;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

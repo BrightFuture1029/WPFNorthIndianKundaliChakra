@@ -22,5 +22,19 @@ namespace ChakraControlLibrary.OtherClasses
         {
             InitializeComponent();
         }
+
+
+
+        public int HouseNumber
+        {
+            get { return (int)GetValue(HouseNumberProperty); }
+            set { SetValue(HouseNumberProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HouseNumber.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HouseNumberProperty =
+            DependencyProperty.Register("HouseNumber", typeof(int), typeof(HouseElementItemsControl), new PropertyMetadata(0));
+
+
     }
 }

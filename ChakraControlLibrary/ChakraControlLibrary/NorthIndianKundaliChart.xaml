@@ -42,7 +42,8 @@
 
                 <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
                     <other:HouseElementItemsControl
-                              Tag="1"
+                              HouseNumber="1"
+                        Style="{StaticResource houseElementsStyle}"
                               VerticalAlignment="Bottom" 
                               HorizontalAlignment="Center"/>
                 </Grid>
@@ -55,7 +56,8 @@
                             <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
                         <other:HouseElementItemsControl
-                                  Tag="2"
+                                  HouseNumber="2"
+                            Style="{StaticResource houseElementsStyle}"
                                   VerticalAlignment="Top" 
                                   HorizontalAlignment="Center" 
                                   Grid.Column="1"/>
@@ -69,7 +71,7 @@
                             <RowDefinition Height="70*"/>
                             <RowDefinition Height="47*"/>
                         </Grid.RowDefinitions>
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="3"/>
+                        <other:HouseElementItemsControl Grid.Row="1" HouseNumber="3" Style="{StaticResource houseElementsStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -80,24 +82,24 @@
                             <RowDefinition Height="80*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="5"/>
+                        <other:HouseElementItemsControl Grid.Row="1" HouseNumber="5" Style="{StaticResource houseElementsStyle}"/>
                     </Grid>
                 </Grid>
 
                 <Grid Grid.Row="4" Grid.Column="1">
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="6"/>
+                    <other:HouseElementItemsControl Grid.Row="1" HouseNumber="6" Style="{StaticResource houseElementsStyle}"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Grid.Column="2">
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="7"/>
+                    <other:HouseElementItemsControl Grid.Row="1" HouseNumber="7" Style="{StaticResource houseElementsStyle}"/>
                 </Grid>
 
                 <Grid Grid.Row="4" Grid.Column="3">
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="8"/>
+                    <other:HouseElementItemsControl Grid.Row="1" HouseNumber="8" Style="{StaticResource houseElementsStyle}"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Grid.Column="4">
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="9"/>
+                    <other:HouseElementItemsControl Grid.Row="1" HouseNumber="9" Style="{StaticResource houseElementsStyle}"/>
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="3">
@@ -108,7 +110,8 @@
                     </Grid.ColumnDefinitions>
                     <other:HouseElementItemsControl
                         VerticalAlignment="Center"
-                        Grid.Column="1" Tag="10"/>
+                        Style="{StaticResource houseElementsStyle}"
+                        Grid.Column="1" HouseNumber="10"/>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="4" Grid.RowSpan="2">
@@ -117,12 +120,12 @@
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="8*"/>
                         </Grid.RowDefinitions>
-                    <other:HouseElementItemsControl Tag="11"/>
+                        <other:HouseElementItemsControl HouseNumber="11" Style="{StaticResource houseElementsStyle}"/>
                     </Grid>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="3">
-                    <other:HouseElementItemsControl Grid.Row="1" Tag="12"/>
+                    <other:HouseElementItemsControl Grid.Row="1" HouseNumber="12" Style="{StaticResource houseElementsStyle}"/>
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" >
@@ -132,10 +135,11 @@
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="44*"/>
                         </Grid.ColumnDefinitions>
-                        <other:HouseElementItemsControl
-                                  Grid.Column="1" 
-                                  VerticalAlignment="Center" 
-                                  HorizontalAlignment="Right"/>
+                        <other:HouseElementItemsControl Grid.Column="1"  
+                                                        HouseNumber="4" 
+                                                        Style="{StaticResource houseElementsStyle}"
+                                                        VerticalAlignment="Center" 
+                                                        HorizontalAlignment="Right"/>
                     </Grid>
                 </Grid>
 
